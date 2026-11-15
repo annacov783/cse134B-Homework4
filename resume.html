@@ -4,6 +4,15 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Website</title>
+        <meta name="color-scheme" content="light dark">
+        <script>
+            try {
+                const theme = localStorage.getItem('theme');
+                if(theme === 'light' || theme === 'dark') {
+                    document.documentElement.dataset.theme = theme;
+                }
+            } catch {}
+        </script>
         <link rel="stylesheet" href="styles.css">
 
         <style>
@@ -37,6 +46,10 @@
                     <li><a href="/resume">Resume</a></li>
                     <li><a href="/interview_response_library">Interview Response Library</a></li>
                 </ul>
+                <label>
+                    <input type="checkbox" id="theme-toggle">
+                    <small>Dark Theme (Click To View Transition)</small>
+                </label>
 
             </nav>
         </header>
@@ -67,7 +80,7 @@
             <strong>Portfolio</strong>
             <i>Content crafted by creator.</i>
         </footer>
-
+        <script src="/theme.js"></script>
     </body>
 
 </html>

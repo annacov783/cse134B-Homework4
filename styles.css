@@ -1,4 +1,7 @@
 :root {
+    color-scheme: light;
+    view-transition-name: root;
+
     --font-body: Arial, Helvetica, sans-serif;
 
     --color-text: rgb(80, 24, 39);
@@ -16,19 +19,49 @@
     --radius: 8px;
 }
 
+:root[data-theme="dark"] {
+    color-scheme: dark;
+
+    --color-text: rgb(153, 188, 205);
+    --color-background: rgb(80, 0, 56);
+    --color-primary-hover: rgb(80, 0, 56);
+    --color-muted: rgb(91, 111, 125);
+}
+
+#theme-toggle {
+    accent-color: var(--color-text);
+    cursor: pointer;
+}
+
+#theme-toggle:focus-visible {
+    outline: 3px solid var(--color-text);
+    outline-offset: 4px;
+}
+
+label:has(#theme-toggle) {
+    cursor: pointer;
+}
+
 * {
     box-sizing: border-box;
 }
 
+
 html {
     scroll-behavior: smooth;
+    transition: background-color 0.5s ease-in-out;
 }
+
+
 
 body {
     margin: 0;
     font-size: 1.0rem;
     line-height: 1.7;
     color: var(--color-text);
+    background-color: transparent;
+    transition:
+        background-color 0.5s ease-in-out;
 }
 
 /*Headings and text*/
@@ -46,6 +79,7 @@ p {
 a {
     color: var(--color-text);
     text-underline-offset: 3px;
+    text-decoration: none;
 }
 
 a:hover {
@@ -140,6 +174,7 @@ article {
     margin-bottom: 2rem;
     
     background-color: var(--color-background);
+    transition: background-color 0.5s ease-in-out;
     border: 1px solid var(--color-text);
     border-radius: var(--radius);
     
@@ -185,6 +220,7 @@ fieldset input:focus-visible{
 
 input[type="submit"],
 input[type="text"], 
+input[type="email"],
 textarea {
     border-width: 0.0rem;
     padding: 0.2rem;
@@ -221,6 +257,47 @@ button:focus {
 
 }
 
+.noJSForm {
+    margin-top: 0rem;
+    padding: 1rem;
+    border: 2px solid var(--color-background);
+    border-radius: var(--radius);
+    background-color: var(--color-background);
+    transition: background-color 0.5s ease-in-out;
+}
+
+.noJSForm form-field {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 0.2rem 1rem;
+    margin: auto;
+}
+
+.noJSForm form-field label {
+    font-weight: 800;
+}
+
+.noJSForm form-field input:focus-visible {
+    outline: 2px solid var(--color-text);
+    outline-offset: 3px;
+
+}
+
+.noJSForm input:required, textarea:required {
+    border-color: var(--color-background);
+    outline: 3px solid var(--color-background);
+}
+
+.noJSForm input[type="text"]:user-invalid, input[type="email"]:user-invalid, textarea:user-invalid {
+    border-color: red;
+    outline: 3px solid red;
+}
+
+.noJSForm form-field input + output, form-field textarea + output {
+    font-size: 0.8rem;
+}
+
 article iframe {
     /*
     display: block;
@@ -245,6 +322,20 @@ footer {
     gap: 0.75rem;
 }
 
+
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation-duration: 0.6s;
+    animation-timing-function: ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+        animation: none;
+    }
+}
+
 /* Narrow screens */
 @media (max-width: 600px) {
     .main-menu {
@@ -255,7 +346,13 @@ footer {
     .horizontalMenu > a {
         padding: 0.65rem 0.5rem;
     }
+
+    .noJSForm form-field {
+        flex-basis: 100%;
+    }
 }
+
+
 
 
 /*rgb(115, 8, 8); rgb(53, 30, 40);*/
