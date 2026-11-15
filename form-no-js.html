@@ -61,13 +61,13 @@
                 <form class="noJSForm" action="https://httpbin.org/post" method="post">
                     <form-field>
                         
-                        <label for="name">Name</label><br>
+                        <label for="name">Name (required)</label><br>
                         <input id="name" name="name" type="text" minlength="2" maxlength="15" required autocomplete="name">
                         <output id="name-hint" class="hint" for="name">Please enter a valid name (max 15 characters).</output><br>
-                        <label for="email">Email</label><br>
+                        <label for="email">Email (required)</label><br>
                         <input id="email" name="email" type="email" minlength="10" maxlength="20" required autocomplete="email">
                         <output id="email-hint" class="hint" for="email">Please enter a valid email (max 20 characters).</output><br>
-                        <label for="comments">Comments</label><br>
+                        <label for="comments">Comments (required)</label><br>
                         <textarea id="comments" name="comments" minlength="5" maxlength="150" required></textarea>
                         <output id="comments-hint" class="hint" for="comments">Please enter a valid email (max 150 characters).</output><br>
                         <input name="possible_bot" type="hidden" value="true">

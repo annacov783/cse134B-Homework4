@@ -65,15 +65,15 @@
                 <form id="withJSForm" class="noJSForm" action="https://httpbin.org/post" method="post">
                     <form-field>
                         
-                        <label for="name">Name</label><br>
+                        <label for="name">Name (required)</label><br>
                         <input id="name" name="name" type="text" minlength="2" maxlength="15" required autocomplete="name">
                         <span data-error-for="name" class="error"></span>
                         
-                        <br><label for="email">Email</label><br>
+                        <br><label for="email">Email (required)</label><br>
                         <input id="email" name="email" type="email" minlength="10" maxlength="20" required autocomplete="email">
                         <span data-error-for="email" class="error"></span>
                         
-                        <br><label for="comments">Comments</label><br>
+                        <br><label for="comments">Comments (required)</label><br>
                         <textarea id="comments" name="comments" minlength="5" maxlength="150" required></textarea>
                         <span data-error-for="comments" class="error"></span><br>
                         
